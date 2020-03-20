@@ -95,7 +95,7 @@ class SortingRobot:
     def helper(self):
         # I need to use the light to say it found something smaller than what it has
         # it will then swap the items move left and swap again
-        # if it's not smaller it needs to put the item back to the left and move right to try again
+        # if it's not smaller it needs to put the item back to the left and move right to keep comparing
         # once it reaches the end of the list it needs to go back to the start and do it again
         while self.can_move_right():
             self.swap_item()
