@@ -117,6 +117,7 @@ class SortingRobot:
         """
         Sort the robot's list.
         """
+        # use insertion sort
         # if the light is on it needs to turn it off and call itself again
         self.helper()
         if self.light_is_on():
