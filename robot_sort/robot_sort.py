@@ -92,12 +92,36 @@ class SortingRobot:
         """
         return self._light == "ON"
 
+    def helper(self):
+        # I need to use the light to say it found something smaller than what it has
+        # it will then swap the items move left and swap again
+        # if it's not smaller it needs to put the item back to the left and move right to try again
+        # once it reaches the end of the list it needs to go back to the start and do it again
+        while self.can_move_right():
+            self.swap_item()
+            self.move_right()
+            if self.compare_item() == 1:
+                self.set_light_on()
+                self.swap_item()
+                self.move_left()
+                self.swap_item()
+            else:
+                self.move_left()
+                self.swap_item()
+            self.move_right()
+        else:
+            while self.can_move_left():
+                self.move_left()
+
     def sort(self):
         """
         Sort the robot's list.
         """
-        # Fill this out
-        pass
+        # if the light is on it needs to turn it off and call itself again
+        self.helper()
+        if self.light_is_on():
+            self.set_light_off()
+            self.sort()
 
 
 if __name__ == "__main__":
